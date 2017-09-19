@@ -15,31 +15,32 @@ class Camera:
     def callback(self, data):
         rospy.loginfo('%s: connected' % rospy.get_name())
 
+        # Read raw image from NumPy array
         np_arr = np.fromstring(data.data, np.uint8)
         image_np = cv2.imdecode(np_arr, 1)
         image_np2 = cv2.imdecode(np_arr, 1)
         rows, cols = image_np.shape[:2]
-        #print((rows, cols))
 
-        dx, dy = (abs((cols - rows) / 2), abs((rows - cols) / 2))
-        rx = (rows / 2 - dx, rows / 2 + dx)
-        ry = (cols / 2 - dy, cols / 2 + dy)
-        #print((dx, dy))
-
+        # Rotate the image about its origin:
+        # - create a rotation matrix
         rotation = cv2.getRotationMatrix2D((cols / 2, rows / 2), -90, 1)
+
+        # - create a translation to the center
         (tx, ty) = ((rows - cols) / 2, (cols - rows) / 2)
         rotation[0, 2] += tx
         rotation[1, 2] += ty
-        #print((tx, ty))
 
+        # - apply matrices
         image_r_np = cv2.warpAffine(image_np, rotation, (rows, cols))
+
+        # Display the result
         cv2.namedWindow('cv_img', cv2.WINDOW_NORMAL)
         cv2.resizeWindow('cv_img', 540, 960)
         cv2.imshow('cv_img', image_r_np)
         cv2.waitKey(2)
 
     def run(self):
-        rospy.spin()
+        rospy.spin() # blocking call, after this everything is handled by callbacks
         cv2.destroyAllWindows()
 
 if __name__ == '__main__':
