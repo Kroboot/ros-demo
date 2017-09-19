@@ -15,7 +15,7 @@ def callback(data):
     print('Processed frame %s' % frames)
 
 rospy.init_node('display')
-sub = rospy.Subscriber("camera/image/compressed", CompressedImage, callback)
+sub = rospy.Subscriber('camera/image/compressed', CompressedImage, callback)
 sub.unregister()
 rate = rospy.Rate(10)
 print('Done initializing')

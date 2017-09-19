@@ -8,12 +8,12 @@ from sensor_msgs.msg import CompressedImage
 
 class Camera:
     def __init__(self):
-        rospy.init_node('display')
-        rospy.loginfo("%s: connected" % rospy.get_name())
-        self.sub = rospy.Subscriber("camera/image/compressed", CompressedImage, self.callback)
+        rospy.init_node('camera')
+        rospy.loginfo('%s: connected' % rospy.get_name())
+        self.sub = rospy.Subscriber('camera/image/compressed', CompressedImage, self.callback)
 
     def callback(self, data):
-        rospy.loginfo("%s: connected" % rospy.get_name())
+        rospy.loginfo('%s: connected' % rospy.get_name())
 
         np_arr = np.fromstring(data.data, np.uint8)
         image_np = cv2.imdecode(np_arr, 1)
@@ -36,7 +36,6 @@ class Camera:
         cv2.namedWindow('cv_img', cv2.WINDOW_NORMAL)
         cv2.resizeWindow('cv_img', 540, 960)
         cv2.imshow('cv_img', image_r_np)
-
         cv2.waitKey(2)
 
     def run(self):

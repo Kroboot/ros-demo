@@ -13,14 +13,14 @@ class Arduino:
         # name for our 'listener' node so that multiple listeners can
         # run simultaneously.
         rospy.init_node('arduino')
-        rospy.loginfo("%s: connected" % (rospy.get_name()))
-        self.sub = rospy.Subscriber("commands", msg.Command, self.callback)
-        self.pub = rospy.Publisher("sensors", msg.Command, queue_size=10)
+        rospy.loginfo('%s: connected' % (rospy.get_name()))
+        self.sub = rospy.Subscriber('commands', msg.Command, self.callback)
+        self.pub = rospy.Publisher('sensors', msg.Command, queue_size=10)
         self.rate = rospy.Rate(10) # 10hz
 
     def callback(self, data):
         params = (rospy.get_caller_id(), Command.get(data.c))
-        rospy.loginfo("%s: heard %s" % params)
+        rospy.loginfo('%s: heard %s' % params)
 
     def run(self, event):
         while not event.wait(0):

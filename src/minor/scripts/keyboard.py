@@ -25,7 +25,7 @@ class Controller:
 
     def __init__(self):
         rospy.init_node('controller')
-        rospy.loginfo("%s: connected" % rospy.get_name())
+        rospy.loginfo('%s: connected' % rospy.get_name())
         self.pub = rospy.Publisher('commands', msg.Command, queue_size=10)
 
     def registercb(self, key, cb):
