@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from threading import Event, Thread
-from beginner_tutorials import msg
+from minor import msg
 from command import *
 
 

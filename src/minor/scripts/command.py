@@ -1,5 +1,5 @@
 #!/usr/bin/evn python
-from beginner_tutorials import msg
+from minor import msg
 
 
 class Command():

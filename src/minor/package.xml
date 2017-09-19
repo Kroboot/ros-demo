@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>beginner_tutorials</name>
+  <name>minor</name>
   <version>0.0.0</version>
-  <description>The beginner_tutorials package</description>
+  <description>Ros package for the Kroboot, a project for the minor Robotics at TU Delft</description>
 
   <author email="gerlof.fokkema@gmail.com">Gerlof Fokkema</author>
   <maintainer email="gerlof.fokkema@gmail.com">Gerlof Fokkema</maintainer>

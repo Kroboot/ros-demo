@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
-from beginner_tutorials import msg
 from command import *
+from minor import msg
 
 
 def getch():

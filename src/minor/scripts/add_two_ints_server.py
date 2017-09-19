@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 
-from beginner_tutorials.srv import *
+from minor.srv import *
 
 class Calculator:
     def __init__(self):
